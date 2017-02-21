@@ -8,7 +8,7 @@
 #include "messages.h"
 
 
-unsigned char generer_reponse(t_message *msg_recu, t_message *msg_sortant);
+void generer_reponse(t_message *msg_recu, t_message *msg_sortant);
 
 void lancer_agglomerateur(t_simulateur_capteur* simul_capteurs)
 {
@@ -51,7 +51,7 @@ void lancer_agglomerateur(t_simulateur_capteur* simul_capteurs)
 	}
 }
 
-unsigned char generer_reponse(t_message *msg_recu, t_message * msg_sortant)
+void generer_reponse(t_message *msg_recu, t_message * msg_sortant)
 {
 	int i;
 
@@ -62,21 +62,11 @@ unsigned char generer_reponse(t_message *msg_recu, t_message * msg_sortant)
 
 	if (msg_recu->entete.commande == MSG_DEBUT_COMM)
 	{
-		msg_sortant->entete.commande = MSG_DEMANDE_STATUS;	
+		msg_sortant->entete.commande = MSG_DEMANDE_STATUS;
 	}
 
 	if (msg_recu->entete.commande == MSG_DEMANDE_STATUS)
 	{
 		msg_sortant->entete.commande = MSG_ENVOI_STATUS;
 	}
-
-
-
-
-
-
-
-
-
-	return msg_sortant;
 }

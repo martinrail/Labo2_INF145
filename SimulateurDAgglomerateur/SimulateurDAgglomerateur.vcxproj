@@ -145,12 +145,14 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="agglomerateur.cpp" />
     <ClCompile Include="interface.cpp" />
     <ClCompile Include="programme_principal.cpp" />
     <ClCompile Include="simulateur_capteurs.cpp" />
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="agglomerateur.h" />
     <ClInclude Include="interface.h" />
     <ClInclude Include="messages.h" />
     <ClInclude Include="simulateur_capteurs.h" />
