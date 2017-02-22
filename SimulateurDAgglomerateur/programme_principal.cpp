@@ -48,7 +48,6 @@ int main() {
 	initialiser_simulateur_capteurs(&simul_capteurs, mode_operation, nb_capteurs);
 
 	// initialise et lance l'agglommérateur
-	// (inserer votre code ici)
 	
 	// libere la mémoire du simulateur de capteurs
 	liberer_simulateur_capteurs(&simul_capteurs);

@@ -149,10 +149,12 @@
     <ClCompile Include="interface.cpp" />
     <ClCompile Include="programme_principal.cpp" />
     <ClCompile Include="simulateur_capteurs.cpp" />
+    <ClCompile Include="liste_capteur.cpp" />
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="agglomerateur.h" />
+    <ClInclude Include="liste_capteur.h" />
     <ClInclude Include="interface.h" />
     <ClInclude Include="messages.h" />
     <ClInclude Include="simulateur_capteurs.h" />
