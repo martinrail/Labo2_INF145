@@ -10,17 +10,19 @@
 
 void generer_reponse(t_message *msg_recu, t_message *msg_sortant);
 
-void lancer_agglomerateur(t_simulateur_capteur* simul_capteurs)
+void lancer_agglomerateur(t_simulateur_capteur* simul_capteurs, int taille)
 {
 	t_message msg_recu;
 	t_message msg_sortant;
+	liste_capteur liste_de_capteur;
+	init_liste_capteur(&liste_de_capteur, taille);
 
 
-	while (1)//boucle infie qui permet d'effectuer toute les action nécéssaires tant et aussi longtemps que l'application est en marche
+	while (1)//boucle infie qui permet d'effectuer toute les action nÃ©cÃ©ssaires tant et aussi longtemps que l'application est en marche
 	{
 		
 
-		if (detection_evenement(simul_capteurs) == 1)// on verifie si un évènement s'est produit ou non 
+		if (detection_evenement(simul_capteurs) == 1)// on verifie si un Ã©vÃ¨nement s'est produit ou non 
 		{
 
 			printf("evenement \n");
