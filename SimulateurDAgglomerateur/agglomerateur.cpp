@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "liste_capteur.h"
 #include "agglomerateur.h"
 #include "interface.h"
 #include "utils.h"
@@ -11,12 +10,10 @@
 
 void generer_reponse(t_message *msg_recu, t_message *msg_sortant);
 
-void lancer_agglomerateur(t_simulateur_capteur* simul_capteurs, int taille)
+void lancer_agglomerateur(t_simulateur_capteur* simul_capteurs)
 {
 	t_message msg_recu;
 	t_message msg_sortant;
-	liste_capteur liste_de_capteur;
-	init_liste_capteur(&liste_de_capteur, taille);
 
 
 	while (1)//boucle infie qui permet d'effectuer toute les action nécéssaires tant et aussi longtemps que l'application est en marche
@@ -28,7 +25,7 @@ void lancer_agglomerateur(t_simulateur_capteur* simul_capteurs, int taille)
 
 			printf("evenement \n");
 			recevoir_message_de_capteur(simul_capteurs, &msg_recu);
-			generer_reponse(&msg_recu, &msg_recu);
+			generer_reponse(&msg_recu, &msg_sortant);
 
 
 
@@ -56,7 +53,9 @@ void lancer_agglomerateur(t_simulateur_capteur* simul_capteurs, int taille)
 
 void generer_reponse(t_message *msg_recu, t_message * msg_sortant)
 {
-	for (int i = 0; i < LONGUEUR_CONTENU_MAX; i++)
+	int i;
+
+	for (i = 0; i < LONGUEUR_CONTENU_MAX; i++)
 	{
 		msg_sortant->entete.id_capteur[i] = msg_recu->entete.id_capteur[i];
 	}
@@ -66,8 +65,16 @@ void generer_reponse(t_message *msg_recu, t_message * msg_sortant)
 		msg_sortant->entete.commande = MSG_DEMANDE_STATUS;
 	}
 
-	if (msg_recu->entete.commande == MSG_DEMANDE_STATUS)
+	if (msg_recu->entete.commande == MSG_ENVOI_STATUS)
 	{
-		msg_sortant->entete.commande = MSG_ENVOI_STATUS;
+		msg_sortant->entete.commande = MSG_DEMANDE_MESURES;
+	}
+	if (msg_recu->entete.commande == MSG_ENVOI_MESURES)
+	{
+		msg_sortant->entete.commande = MSG_TERMINE_COMM;
 	}
 }
+
+
+
+
